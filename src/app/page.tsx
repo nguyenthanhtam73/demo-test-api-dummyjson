@@ -25,12 +25,12 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const handleShowDetail = (data) => {
+  const handleShowDetail = (data: any) => {
     setDataDetail(data);
     setIsModalVisible(true);
   };
 
-  const handleSetIsModalVisible = (data) => {
+  const handleSetIsModalVisible = (data: any) => {
     if (!data) {
       setDataDetail({});
     }
@@ -41,9 +41,11 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <TableComponent data={products} showDetail={handleShowDetail} />
       <ModalComponent
-        data={dataDetail}
-        isShow={isModalVisible}
-        handleSetIsModalVisible={handleSetIsModalVisible}
+        data={{
+          data: dataDetail,
+          isShow: isModalVisible,
+          handleSetIsModalVisible: handleSetIsModalVisible,
+        }}
       />
     </main>
   );

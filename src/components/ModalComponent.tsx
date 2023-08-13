@@ -1,8 +1,16 @@
 import React from "react";
 import { Button, Modal } from "antd";
 
-function ModalComponent(props) {
-  const { data: productData, isShow, handleSetIsModalVisible } = props;
+interface ModalComponentProps {
+  data: {
+    data: any;
+    isShow: boolean;
+    handleSetIsModalVisible: (isShow: boolean) => void;
+  };
+}
+
+const ModalComponent: React.FC<ModalComponentProps> = ({ data }) => {
+  const { data: productData, isShow, handleSetIsModalVisible } = data;
 
   const handleOk = () => {
     handleSetIsModalVisible(false);
@@ -46,7 +54,7 @@ function ModalComponent(props) {
       </Modal>
     </div>
   );
-}
+};
 
 ModalComponent.propTypes = {};
 
